@@ -1,0 +1,18 @@
+use_default_settings: true
+
+server:
+  secret_key: "change-me-widescrape-local-key"
+  limiter: true
+
+search:
+  formats:
+    - html
+    - json
+
+engines:
+  - name: google
+    disabled: false
+  - name: bing
+    disabled: false
+  - name: duckduckgo
+    disabled: false
