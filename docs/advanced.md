@@ -99,6 +99,6 @@ flowchart LR
 ## 5. Tests & Benchmarks
 
 ```bash
-uv run --no-sync --with pytest pytest -v
+uv run --no-project --with pytest pytest -v
 uv run --no-sync python benchmarks/eval_compression.py
 ```

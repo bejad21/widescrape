@@ -17,7 +17,7 @@ Scrapes **Reddit, X, LinkedIn, GitHub, Hacker News, Google News, StackExchange, 
 ## Setup (1 Minute)
 
 ```bash
-git clone <your-repo-url> widescrape && cd widescrape
+git clone https://github.com/bejad21/widescrape.git && cd widescrape
 uv sync
 uv run widescrape install --with-mcp   # Register SKILL.md + MCP server (Antigravity, Claude, Codex, Cursor)
 uv run widescrape doctor               # Verify dependencies and live search

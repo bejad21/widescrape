@@ -1,6 +1,6 @@
 # WideScrape — Independent Senior Code & Architecture Audit
 
-- **Target Repository:** `C:\Users\bigoa\.gemini\antigravity\scratch\widescrape`
+- **Target Repository:** `<repo-root>/widescrape` (`https://github.com/bejad21/widescrape`)
 - **Runtime State Audited:** `%USERPROFILE%\.widescrape\` (`widescrape_cache.db`, `modes.json`, `exports/`, `logs/widescrape.log`)
 - **Audit Scope:** Full read-through of all 26 Python files (core package, 8 source adapters, tests, benchmarks), packaging/infra (`pyproject.toml`, `docker-compose.yml`, `searxng/settings.yml`, `.gitignore`), documentation (`README.md`, `docs/advanced.md`), and Agent Skill files (`SKILL.md`, `references/recipes.md`, `references/output-guide.md`).
 - **Verification Executed:**
@@ -236,7 +236,7 @@ However, **beneath the passing 23-test suite (`pytest` covers happy-path unit be
   2. **Silent Error Swallowing:** `orchestrator.py:137-143` was updated to surface `adapter_errors`, **but 7 of 8 adapters catch all HTTP non-200 (403, 429, 503) and network/JSON exceptions internally and return `[]`**! Only `StackExchangeAdapter` raises `RuntimeError` on HTTP error, and `ArxivAdapter` only lets `HTTPError` bubble (while still swallowing HTTP 429/500). In production, `logs/widescrape.log` remained **0 bytes** despite repeated scraping runs because adapters fail invisibly as `0 items` rather than warning the user/agent.
 - **Verified Evidence:**
   - Python verification: `len(expand_query("remote AI engineer", mode="jobs").dork_queries) == 21` -> `21 * 4 * 3 = 252` requests (up to `504` with `days`).
-  - Disk inspection: `C:\Users\bigoa\.widescrape\logs\widescrape.log` is `0 bytes` even though `widescrape_cache.db` holds 1,066 items across ~20+ runs.
+  - Disk inspection: `~/.widescrape/logs/widescrape.log` is `0 bytes` even though `widescrape_cache.db` holds 1,066 items across ~20+ runs.
 - **Concrete Fix:**
   1. Cap dork fan-out with a query/request budget (e.g., max 2 backends by default, page 1 first, fetch page 2–3 only if unique hits < target `limit`, stop early once `limit` reached, reuse `DDGS` client safely, add jitter/backoff on 429).
   2. Move `fetch_pages` / Playwright enrichment **after** deduplication, noise filtering, and initial snippet BM25 ranking so WideScrape only fetches full pages for the top N *unique, relevant* hits (not duplicates or spam).
