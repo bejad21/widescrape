@@ -30,7 +30,7 @@ uv run widescrape mode promote "nurse" healthcare-remote
 
 ## 2. AI Agent & MCP Setup
 
-One command installs `SKILL.md` + `references/` and registers the 7-tool MCP server (`widescrape_search`, `widescrape_read`, `widescrape_cache_find`, `widescrape_crawl`, `widescrape_map`, `widescrape_modes`, `widescrape_export`) for Antigravity, Claude Code, Codex, and Cursor. Intermediate MCP `search` and `crawl` calls write only to SQLite cache (`export=False` by default), and `widescrape_export` writes **one** consolidated `.md`/`.xlsx`/`.html` deliverable at the end of a task:
+One command installs `SKILL.md` + `references/` and registers the 7-tool MCP server (`widescrape_search`, `widescrape_read`, `widescrape_cache_find`, `widescrape_crawl`, `widescrape_map`, `widescrape_modes`, `widescrape_export`) for Antigravity, Claude Code, Codex, and Cursor (see [docs/agent-setup.md](./agent-setup.md) for per-agent CLI/JSON/TOML steps including Codex, VS Code Copilot, and Windsurf). Intermediate MCP `search` and `crawl` calls write only to SQLite cache (`export=False` by default), and `widescrape_export` writes **one** consolidated `.md`/`.xlsx`/`.html` deliverable at the end of a task:
 
 ```bash
 uv run widescrape install --with-mcp

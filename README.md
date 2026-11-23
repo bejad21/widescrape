@@ -95,5 +95,6 @@ uv run widescrape crawl "https://modelcontextprotocol.io/introduction" --depth 2
 
 ## More Docs
 
+- **Agent & MCP Setup (Antigravity, Claude Code, Codex, Cursor, VS Code, Windsurf):** [docs/agent-setup.md](./docs/agent-setup.md)
 - **Custom Modes, MCP Config, SearXNG, Proxies & Tests:** [docs/advanced.md](./docs/advanced.md)
 - **AI Agent Instructions:** [SKILL.md](./SKILL.md)
