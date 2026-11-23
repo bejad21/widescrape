@@ -25,6 +25,8 @@ uv run widescrape doctor               # Verify dependencies and live search
 
 *(Prefer `pip`? Run `pip install -e .` and replace `uv run widescrape` with `widescrape`.)*
 
+> Want manual or per-agent instructions (Antigravity, Claude Code, OpenAI Codex, Cursor, VS Code Copilot, Windsurf)? See the step-by-step **[Agent & MCP Setup Guide](./docs/agent-setup.md)**.
+
 ---
 
 ## Quick Start
